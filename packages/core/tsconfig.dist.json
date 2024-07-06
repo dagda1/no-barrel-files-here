@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig-base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/esm",
+    "rootDir": "src",
+    "noEmit": false
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "./node_modules/@nobarrels/theme/mui.d.ts"
+  ],
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "__mocks__"]
+}

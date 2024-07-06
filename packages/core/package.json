@@ -1,0 +1,76 @@
+{
+  "name": "@nobarrels/core",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "sideEffects": false,
+  "author": "",
+  "license": "ISC",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production vite build",
+    "lint": "eslint ./src/**/*.{ts,tsx} --fix",
+    "dev": "pnpm vite --host --port 7000 -l info",
+    "test": "cross-env NODE_ENV=test vitest",
+    "test:ci": "cross-env CI=true pnpm test",
+    "watch": "vite build --watch"
+  },
+  "dependencies": {
+    "@nobarrels/theme": "workspace:*",
+    "immer": "^10.1.1",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "use-immer": "^0.10.0"
+  },
+  "devDependencies": {
+    "@tanstack/query-core": "5.50.1",
+    "@tanstack/react-query": "5.50.1",
+    "@types/zen-observable": "^0.8.7",
+    "@mui/material": "5.16.0",
+    "@mui/styles": "5.16.0",
+    "@mui/system": "5.16.0",
+    "@mui/utils": "5.16.0",
+    "@rjsf/core": "5.19.1",
+    "@rjsf/mui": "5.19.1",
+    "@rjsf/utils": "5.19.1",
+    "date-fns": "2.30.0",
+    "axios": "^1.7.2",
+    "glob": "10.4.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.24.1",
+    "react-use": "^17.5.0",
+    "ts-expect": "^1.3.0",
+    "zen-observable": "0.10.0"
+  },
+  "keywords": [],
+  "peerDependencies": {
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.5",
+    "@mui/material": "5.16.0",
+    "@mui/styles": "5.16.0",
+    "@mui/system": "5.16.0",
+    "@mui/utils": "5.16.0",
+    "@rjsf/core": "5.19.1",
+    "@rjsf/mui": "5.19.1",
+    "@rjsf/utils": "5.19.1",
+    "@tanstack/query-core": "5.50.1",
+    "@tanstack/react-query": "5.50.1",
+    "axios": "^1.7.2",
+    "date-fns": "2.30.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.24.1",
+    "react-use": "^17.5.0",
+    "zen-observable": "0.10.0",
+    "zod": "^3.23.8",
+    "zustand": "4.5.4"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "exports": {
+    ".": "./dist/esm/index.js",
+    "./*": "./dist/esm/*"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/esm",
+    "declaration": true,
+    "rootDir": "src",
+    "noEmit": false
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "./mui.d.ts"],
+  "exclude": ["vite.config.mts", "test/**/*.ts", "test/**/*.tsx"]
+}

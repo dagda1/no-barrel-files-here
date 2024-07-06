@@ -1,0 +1,65 @@
+{
+  "name": "@nobarrels/theme",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "sideEffects": false,
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production vite build",
+    "lint": "eslint ./src/**/*.{ts,tsx} --fix",
+    "dev": "pnpm vite --host --port 7000 -l info",
+    "test": "cross-env NODE_ENV=test vitest",
+    "test:ci": "cross-env CI=true pnpm test",
+    "watch": "vite build --watch"
+  },
+  "devDependencies": {
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.5",
+    "@fontsource-variable/inter": "^5.0.19",
+    "@mui/icons-material": "5.16.0",
+    "@mui/material": "5.16.0",
+    "@mui/base": "5.0.0-beta.40",
+    "@mui/styled-engine": "5.15.14",
+    "@mui/styles": "5.16.0",
+    "@mui/system": "5.16.0",
+    "@mui/types": "7.2.14",
+    "@mui/utils": "5.16.0",
+    "glob": "10.4.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "peerDependencies": {
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.5",
+    "@mui/icons-material": "5.16.0",
+    "@mui/material": "5.16.0",
+    "@mui/base": "5.0.0-beta.40",
+    "@mui/styled-engine": "5.15.14",
+    "@mui/styles": "5.16.0",
+    "@mui/system": "5.16.0",
+    "@mui/types": "7.2.14",
+    "@mui/utils": "5.16.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "files": [
+    "dist",
+    "mui.d.ts"
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "exports": {
+    ".": "./dist/esm/index.js",
+    "./*": "./dist/esm/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["./dist/esm/*"]
+    }
+  }
+}

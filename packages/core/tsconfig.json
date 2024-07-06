@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig-base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/esm",
+    "rootDirs": ["src", "core/__mocks__"],
+    "noEmit": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/**/*.ts",
+    "test/**/*.tsx",
+    "core/__mocks__",
+    "./node_modules/@nobarrels/theme/mui.d.ts"
+  ],
+  "exclude": ["vite.config.mts"]
+}
