@@ -1,9 +1,10 @@
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig } from 'vitest/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { glob } from 'glob';
 import dts from 'vite-plugin-dts';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
-import { glob } from 'glob';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
 
 function getEntryPoints() {
   const entries: string[] = [];
@@ -34,6 +35,7 @@ export default defineConfig({
       },
     }),
     tsconfigPaths(),
+    nodeResolve(),
     react(),
   ],
   logLevel: 'warn',
@@ -50,6 +52,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
+      preserveEntrySignatures: 'allow-extension',
       external: ['@emotion/styled', '@emotion/react', 'react', 'react-dom'],
       input: [...entries],
       output: {

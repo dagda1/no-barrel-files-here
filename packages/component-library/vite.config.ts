@@ -2,10 +2,10 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
 import { glob } from 'glob';
 import dts from 'vite-plugin-dts';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getEntryPoints() {
   const entries: string[] = [];
   const patterns = ['src/**/*.ts*'];
@@ -14,6 +14,9 @@ function getEntryPoints() {
     const files = glob.sync(pattern);
     for (const file of files) {
       if (file.includes('__mocks__') || file.includes('.test.')) {
+        continue;
+      }
+      if (file.endsWith('/App.tsx')) {
         continue;
       }
       entries.push(file);
@@ -25,22 +28,23 @@ function getEntryPoints() {
 
 const entries = getEntryPoints();
 
+console.dir(entries, { depth: 8 });
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     dts({ tsconfigPath: 'tsconfig.dist.json', insertTypesEntry: true, logLevel: 'error' }),
-    nodePolyfills({
-      globals: {
-        Buffer: true,
-      },
-    }),
     tsconfigPaths(),
     nodeResolve(),
     react(),
   ],
-  logLevel: 'warn',
   resolve: {
-    dedupe: ['react', 'react-dom', '@emotion/react'],
+    dedupe: ['react', 'react-dom', '@emotion/react', '@mui/material'],
+  },
+  logLevel: 'warn',
+  optimizeDeps: {
+    include: ['@emotion/react', '@emotion/styled', '@mui/material/Tooltip', '@mui/material/Box'],
+    force: true,
   },
   build: {
     manifest: true,
@@ -53,22 +57,14 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        '@emotion/styled',
         '@emotion/react',
+        '@emotion/styled',
         /^@nobarrels\/.*/,
-        '@material-table/core',
         /^@mui\/.*/,
-        /^@rjsf\/.*/,
-        /^@tanstack\/.*/,
-        'axios',
         'date-fns',
         'react',
         'react-dom',
         'react-router-dom',
-        'react-use',
-        'zen-observable',
-        'zod',
-        'zustand',
       ],
       input: [...entries],
       output: {
@@ -83,7 +79,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     css: true,
-    setupFiles: './setuptests.ts',
     server: {
       deps: {
         fallbackCJS: true,

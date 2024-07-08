@@ -5,7 +5,9 @@
     "declarationMap": true,
     "sourceMap": true,
     "paths": {
-      "@nobarrels/theme": ["./packages/nobarrels/theme/*"]
+      "@nobarrels/theme": ["./packages/nobarrels/theme/src/*"],
+      "@nobarrels/core": ["./packages/nobarrels/core/src/*"],
+      "@nobarrels/component-library": ["./packages/nobarrels/component-library/src/*"]
     }
   }
 }
