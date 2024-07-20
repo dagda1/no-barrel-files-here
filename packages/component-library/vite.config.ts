@@ -42,10 +42,6 @@ export default defineConfig({
     dedupe: ['react', 'react-dom', '@emotion/react', '@mui/material'],
   },
   logLevel: 'warn',
-  optimizeDeps: {
-    include: ['@emotion/react', '@emotion/styled', '@mui/material/Tooltip', '@mui/material/Box'],
-    force: true,
-  },
   build: {
     manifest: true,
     minify: true,

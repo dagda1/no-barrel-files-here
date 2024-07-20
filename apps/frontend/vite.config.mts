@@ -22,10 +22,6 @@ export default defineConfig({
     react(),
   ],
   logLevel: 'warn',
-  optimizeDeps: {
-    include: ['@emotion/react', '@emotion/styled', '@mui/material/Tooltip', '@mui/material/Box'],
-    exclude: ['@nobarrels/core', '@nobarrels/theme'],
-  },
   resolve: {
     dedupe: ['react', 'react-dom', '@emotion/react', 'vite-plugin-node-polyfills'],
     alias: {
